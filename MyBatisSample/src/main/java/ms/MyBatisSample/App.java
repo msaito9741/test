@@ -21,7 +21,7 @@ public class App
 {
     public static void main( String[] args )
     {
-//        System.out.println( "Hello World!" );
+//+++++        System.out.println( "Hello World!" );
 
         // resources直下のmybatis-config.xmlを読み込みます(1)
         try (Reader r = Resources.getResourceAsReader("mybatis-config.xml");) {
