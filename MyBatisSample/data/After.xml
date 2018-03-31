@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <!--
+        日付は検証対象外だが一応記載します。
+        フィルターできていることを検証するために、わざと違う日付を入力しておきます。
+    -->
+    <weather
+            city_id="120"
+            weather_no="1"
+            city_name="横浜市"
+            temp_lo="101"
+            temp_hi="201"
+            prcp="151"
+            date="2017-12-31"
+    />
+</dataset>
+
+

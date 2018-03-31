@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <!--
+        データセット用のXMLでは数値データも""で囲む
+        DATEやTIMESTAMP型の日付は「-」つなぎで指定する
+    -->
+    <weather
+            city_id="120"
+            weather_no="1"
+            city_name="横浜市"
+            temp_lo="10"
+            temp_hi="20"
+            prcp="15"
+            date="2017-01-01"
+    />
+</dataset>
