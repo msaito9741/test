@@ -55,7 +55,7 @@ public class AppTest
 		databaseTester = new JdbcDatabaseTester("org.postgresql.Driver",
                 "jdbc:postgresql://localhost:5432/postgres", "postgres", "postgres", "jsv");
 
-	       // --------------------------------------
+        // --------------------------------------
         // テストデータ投入
         // --------------------------------------
         IDataSet dataSet = new FlatXmlDataSetBuilder().build(new File("./data/Before.xml"));
