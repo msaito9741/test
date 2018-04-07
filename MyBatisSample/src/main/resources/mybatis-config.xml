@@ -20,6 +20,7 @@
     <mappers>
     	<mapper resource="ms/MyBatisSample/mapper/jsv/CitiesMapper.xml"/>
     	<mapper resource="ms/MyBatisSample/mapper/jsv/WeatherMapper.xml"/>
+    	<mapper resource="ms/MyBatisSample/mapper/jsv/ImageMapper.xml"/>
         <!-- <package name="ms.MyBatisSample.entity.jsv" />  -->
     </mappers>
 </configuration>

@@ -2,7 +2,10 @@ package ms.MyBatisSample;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.Reader;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Date;
 
@@ -15,6 +18,7 @@ import ms.MyBatisSample.entity.jsv.Cities;
 import ms.MyBatisSample.entity.jsv.Image;
 import ms.MyBatisSample.entity.jsv.Weather;
 import ms.MyBatisSample.mapper.jsv.CitiesMapper;
+import ms.MyBatisSample.mapper.jsv.ImageMapper;
 import ms.MyBatisSample.mapper.jsv.WeatherMapper;
 
 /**
@@ -77,7 +81,6 @@ public class App
                 //System.out.println("Insert--->"+iRet+"件");
                 System.out.println("Update--->"+iRet+"件");
 
-                //File imageFile = new File("C:/D_Drive/xxxx.jpg");
                 String encoded;
                 byte[] b = new byte[1];
                 FileInputStream fis = new FileInputStream("C:/D_Drive/IMAGE_2/DOCTORS_01.jpg");
@@ -97,12 +100,26 @@ public class App
                 finally {
                 	fis.close();
                 }
-                String insSQL = "SELECT COALESCE(MAX(image_id),0) FROM image";
-                int max = session.selectOne(insSQL);
+                ImageMapper imgMap = session.getMapper(ImageMapper.class);
+                int max = (int) imgMap.selectMax();
                 Image imgPrm = new Image();
-                imgPrm.setImage_id(String.valueOf(max));
-                imgPrm.setImage_name("images");
-                imgPrm.setImage_data(encoded);
+                imgPrm.setImageId(max+=1);
+                imgPrm.setImageName("images");
+                imgPrm.setImageData(encoded);
+                imgMap.insert(imgPrm);
+
+//                File file = new File("C:/D_Drive/IMAGE_1/images"+max+".jpg");
+//                PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+//                pw.println(encoded);
+//                pw.close();
+
+                Charset charset = StandardCharsets.UTF_8;
+                byte[] bytes = Base64.getDecoder().decode(encoded.getBytes());
+                String result = new String(bytes, charset);
+                FileOutputStream fileOutStm = new FileOutputStream("C:/D_Drive/IMAGE_1/images"+max+".jpg");
+                fileOutStm.write(bytes);
+                fileOutStm.close();
+
 //                CitiesExample ex = new CitiesExample();
 //                ex.setDistinct(false);
 //                ex.setOrderByClause("city_Id");
