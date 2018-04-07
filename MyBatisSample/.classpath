@@ -18,7 +18,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/DIGI-ADMIN/.m2/repository/junit/junit/4.8.2/junit-4.8.2.jar" sourcepath="C:/Users/DIGI-ADMIN/.m2/repository/junit/junit/4.8.2/junit-4.8.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/DIGI-ADMIN/.m2/repository/org/jmockit/jmockit/1.30/jmockit-1.30.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DIGI-ADMIN/.m2/repository/org/jmockit/jmockit/1.30/jmockit-1.30.jar" sourcepath="C:/Users/DIGI-ADMIN/.m2/repository/org/jmockit/jmockit/1.30/jmockit-1.30-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DIGI-ADMIN/.m2/repository/org/dbunit/dbunit/2.5.3/dbunit-2.5.3.jar" sourcepath="C:/Users/DIGI-ADMIN/.m2/repository/org/dbunit/dbunit/2.5.3/dbunit-2.5.3-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DIGI-ADMIN/.m2/repository/junit/junit/4.8.2/junit-4.8.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -2,20 +2,19 @@ package ms.MyBatisSample;
 
 import java.io.File;
 
-import org.dbunit.Assertion;
 import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
-import org.dbunit.dataset.ITable;
-import org.dbunit.dataset.filter.DefaultColumnFilter;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
+//import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
-import junit.framework.Test;
+//import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 import mockit.Mock;
 
 
@@ -83,44 +82,55 @@ public class AppTest
      * DBUnitを使用して、DBの更新結果を検証する。<br>
      */
     //@Test
-    public void test() {
-    	System.out.println("JUnit + DBUnitによるテスト開始。");
+//    public void test() {
+//    	System.out.println("JUnit + DBUnitによるテスト開始。");
+//
+//		String[] prm1 = {"120"};
+//		ap1.main(prm1);
+//       //TestMain.main(null);
+//
+//        try {
+//            // ----------------------------------
+//            // DBUnitで更新後データチェック
+//            // ----------------------------------
+//            IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("./data/After.xml"));
+//            ITable expectedTable = expectedDataSet.getTable("weather");
+//
+//            IDataSet databaseDataSet = databaseTester.getConnection().createDataSet();
+//            ITable actualTable = databaseDataSet.getTable("weather");
+//
+//            // 時間に対するAssertionはほぼ確実に失敗するので検証対象から除外する
+//            ITable filteredExpectedTable = DefaultColumnFilter.excludedColumnsTable(
+//                    expectedTable, new String[]{"date"});
+//            ITable filteredActualTable;
+//            filteredActualTable = DefaultColumnFilter.excludedColumnsTable(
+//                    actualTable, new String[]{"date"});
+//
+//            // ---------------------------------------------------------------
+//            // 更新結果の検証はJUnitではなくDBUnitのAssertionを使用する
+//            // ---------------------------------------------------------------
+//            Assertion.assertEquals(filteredExpectedTable, filteredActualTable);
+////            assertEquals(ap1.testBol(Integer.parseInt(prm1[0])), 120);
+//
+//        } catch (Exception e) {
+//        	System.out.println("エラー"+ e);
+//            fail("予期しないエラーでテストが失敗しました。");
+//        }
+//
+//        System.out.println("JUnit + DBUnitによるテスト終了。");
+//    }
+    
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+    //@Test
+    public void test02() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("param error!");
 
-		String[] prm1 = {"120"};
+		String[] prm1 = {"110"};
 		ap1.main(prm1);
-       //TestMain.main(null);
 
-        try {
-            // ----------------------------------
-            // DBUnitで更新後データチェック
-            // ----------------------------------
-            IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("./data/After.xml"));
-            ITable expectedTable = expectedDataSet.getTable("weather");
-
-            IDataSet databaseDataSet = databaseTester.getConnection().createDataSet();
-            ITable actualTable = databaseDataSet.getTable("weather");
-
-            // 時間に対するAssertionはほぼ確実に失敗するので検証対象から除外する
-            ITable filteredExpectedTable = DefaultColumnFilter.excludedColumnsTable(
-                    expectedTable, new String[]{"date"});
-            ITable filteredActualTable;
-            filteredActualTable = DefaultColumnFilter.excludedColumnsTable(
-                    actualTable, new String[]{"date"});
-
-            // ---------------------------------------------------------------
-            // 更新結果の検証はJUnitではなくDBUnitのAssertionを使用する
-            // ---------------------------------------------------------------
-            Assertion.assertEquals(filteredExpectedTable, filteredActualTable);
-//            assertEquals(ap1.testBol(Integer.parseInt(prm1[0])), 120);
-
-        } catch (Exception e) {
-        	System.out.println("エラー"+ e);
-            fail("予期しないエラーでテストが失敗しました。");
-        }
-
-        System.out.println("JUnit + DBUnitによるテスト終了。");
     }
-
     @Mock
     private boolean methodTestBol(int mode) {
         return true;
@@ -140,10 +150,10 @@ public class AppTest
     /**
      * @return the suite of tests being tested
      */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+//    public static Test suite()
+//    {
+//        return new TestSuite( AppTest.class );
+//    }
 
     /**
      * Rigourous Test :-)
